@@ -8,7 +8,7 @@ open class BaseFragment : Fragment() {
 
     private val presentationComponent by lazy {
         (requireActivity() as BaseActivity).activityComponent
-            .newPresentationComponent(PresentationModule())
+            .newPresentationComponent()
     }
 
     protected val injector get() = presentationComponent

@@ -16,7 +16,7 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     private val presentationComponent by lazy {
-        activityComponent.newPresentationComponent(PresentationModule())
+        activityComponent.newPresentationComponent()
     }
 
     protected val injector: PresentationComponent get() = presentationComponent
