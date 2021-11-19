@@ -8,21 +8,24 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class ActivityModule(
+object  ActivityModule/*(
         val activity: AppCompatActivity
-) {
+)*/ {
 
+    /* // we can remove this dependency because is injected drectly to the component
     @Provides
     fun activity() = activity
+*/
 
-    @Provides
-    @ActivityScope
-    fun screensNavigator() = ScreensNavigator(activity)
+        @Provides
+        @ActivityScope
+        fun screensNavigator(activity: AppCompatActivity) = ScreensNavigator(activity)
 
-    @Provides
-    fun layoutInflater(): LayoutInflater = LayoutInflater.from(activity)
+        @Provides
+        fun layoutInflater(activity: AppCompatActivity): LayoutInflater =
+            LayoutInflater.from(activity)
 
-    @Provides
-    fun fragmentManager() = activity.supportFragmentManager
+        @Provides
+        fun fragmentManager(activity: AppCompatActivity) = activity.supportFragmentManager
 
 }
